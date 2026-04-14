@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bozy Bonifacio | Public Profile</title>
+  <meta name="description" content="Public profile for Bozy Bonifacio" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.08);
+      --panel-strong: rgba(255,255,255,0.12);
+      --text: #eef2ff;
+      --muted: #bcc6e6;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 50px rgba(0,0,0,0.25);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(125,211,252,0.18), transparent 26%),
+        radial-gradient(circle at top right, rgba(167,139,250,0.18), transparent 28%),
+        linear-gradient(180deg, #0b1020 0%, #121933 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(14px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card {
+      padding: 32px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 60px);
+      line-height: 1.02;
+      margin: 0 0 14px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 60ch;
+      margin: 0 0 24px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--panel-strong);
+      color: var(--text);
+      font-weight: 600;
+      min-height: 48px;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, rgba(125,211,252,0.25), rgba(167,139,250,0.25));
+    }
+
+    .profile-meta {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(125,211,252,0.35), rgba(167,139,250,0.35));
+      border: 1px solid var(--border);
+    }
+
+    .meta-grid,
+    .info-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-row,
+    .info-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 15px;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-card {
+      padding: 26px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .chat-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 22px 24px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .chat-window {
+      padding: 20px 24px;
+      height: 360px;
+      overflow: auto;
+      display: grid;
+      gap: 12px;
+      background: rgba(7, 10, 22, 0.25);
+    }
+
+    .bubble {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 15px;
+      white-space: pre-wrap;
+    }
+
+    .bot {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      justify-self: start;
+    }
+
+    .user {
+      background: rgba(125,211,252,0.16);
+      border: 1px solid rgba(125,211,252,0.18);
+      justify-self: end;
+    }
+
+    .chat-input {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 18px 24px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      min-height: 50px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      padding: 0 14px;
+      font-size: 15px;
+    }
+
+    input[type="text"]::placeholder { color: #9aa7d0; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 8px;
+    }
+
+    .small { color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .hero,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-input {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">Bozy Bonifacio</div>
+      <div class="tag">Public profile • static site ready for GitHub Pages</div>
+    </div>
+
+    <section class="hero">
+      <div class="card hero-card">
+        <div class="eyebrow">RPA &amp; AI Team</div>
+        <h1>Building practical automation and AI experiences.</h1>
+        <p class="subtitle">
+          Hi, I’m Bozy Bonifacio. I work on automation and AI initiatives, focusing on turning useful ideas into systems that are usable, efficient, and easy to scale.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:bozy.bonifacio@axi.com">Contact me</a>
+          <a class="btn" href="#chat">Ask the profile bot</a>
+        </div>
+      </div>
+
+      <aside class="card profile-meta">
+        <div class="avatar">BB</div>
+        <div>
+          <div style="font-size: 24px; font-weight: 800;">Bozy Bonifacio</div>
+          <div class="small">Automation, AI, and product-minded systems work</div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta-row">
+            <div class="label">Team</div>
+            <div class="value">RPA &amp; AI Team</div>
+          </div>
+          <div class="meta-row">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:bozy.bonifacio@axi.com">bozy.bonifacio@axi.com</a></div>
+          </div>
+          <div class="meta-row">
+            <div class="label">Handle</div>
+            <div class="value">@bozy.bonifacio</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-grid">
+      <div class="card section-card">
+        <h2>About</h2>
+        <p>
+          My work sits at the intersection of automation, internal tooling, and applied AI. I care about systems that reduce repetitive work, improve clarity, and make teams faster without adding unnecessary complexity.
+        </p>
+        <p>
+          This page is intentionally lightweight so it can be hosted on GitHub Pages or any other static hosting provider with minimal setup.
+        </p>
+      </div>
+
+      <div class="card section-card">
+        <h2>Focus areas</h2>
+        <div class="chips">
+          <span class="chip">Workflow automation</span>
+          <span class="chip">AI assistants</span>
+          <span class="chip">Internal tools</span>
+          <span class="chip">Process design</span>
+          <span class="chip">Prompt UX</span>
+          <span class="chip">Operational efficiency</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="card section-card">
+        <h2>What I value</h2>
+        <ul>
+          <li>Simple systems that solve real problems</li>
+          <li>Automation that respects human workflows</li>
+          <li>Readable interfaces and clear communication</li>
+          <li>Fast iteration with practical constraints in mind</li>
+        </ul>
+      </div>
+
+      <div class="card section-card">
+        <h2>Notes</h2>
+        <p>
+          Replace any section here with your real bio, links, achievements, resume, project cards, or social accounts. Everything is in one file so edits are easy.
+        </p>
+        <p class="small">
+          Tip: if you later want a real AI chatbot, keep this page on GitHub Pages and connect the chat UI to a serverless backend so your API key stays private.
+        </p>
+      </div>
+    </section>
+
+    <section id="chat" class="card chat-card">
+      <div class="chat-header">
+        <div>
+          <h2 style="margin-bottom: 6px;">Profile bot</h2>
+          <div class="small">A static, client-side chatbot that answers basic questions about this profile.</div>
+        </div>
+        <div class="tag">No backend required</div>
+      </div>
+      <div class="chat-window" id="chatWindow"></div>
+      <div class="chat-input">
+        <input id="chatInput" type="text" placeholder="Ask about Bozy’s role, team, contact details, or focus areas" />
+        <button class="btn primary" id="sendBtn" type="button">Send</button>
+      </div>
+    </section>
+
+    <footer>
+      Built as a single-file static profile for GitHub Pages.
+    </footer>
+  </div>
+
+  <script>
+    const knowledge = {
+      name: "Bozy Bonifacio",
+      team: "RPA & AI Team",
+      email: "bozy.bonifacio@axi.com",
+      handle: "@bozy.bonifacio",
+      summary: "Bozy works on automation and AI initiatives, focusing on practical systems that reduce repetitive work and improve team efficiency.",
+      focus: [
+        "workflow automation",
+        "AI assistants",
+        "internal tools",
+        "process design",
+        "prompt UX",
+        "operational efficiency"
+      ],
+      values: [
+        "simple systems that solve real problems",
+        "automation that respects human workflows",
+        "readable interfaces and clear communication",
+        "fast iteration with practical constraints in mind"
+      ]
+    };
+
+    const chatWindow = document.getElementById('chatWindow');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    function addMessage(text, role = 'bot') {
+      const bubble = document.createElement('div');
+      bubble.className = `bubble ${role}`;
+      bubble.textContent = text;
+      chatWindow.appendChild(bubble);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function answerQuestion(question) {
+      const q = question.toLowerCase();
+
+      if (q.includes('name') || q.includes('who are you')) {
+        return `${knowledge.name}. ${knowledge.summary}`;
+      }
+
+      if (q.includes('team') || q.includes('work') || q.includes('role')) {
+        return `${knowledge.name} is part of the ${knowledge.team} and focuses on ${knowledge.focus.slice(0, 3).join(', ')}.`;
+      }
+
+      if (q.includes('email') || q.includes('contact') || q.includes('reach')) {
+        return `You can contact ${knowledge.name} at ${knowledge.email}. The public handle shown on this page is ${knowledge.handle}.`;
+      }
+
+      if (q.includes('focus') || q.includes('skills') || q.includes('expertise')) {
+        return `${knowledge.name}'s focus areas include ${knowledge.focus.join(', ')}.`;
+      }
+
+      if (q.includes('value') || q.includes('approach') || q.includes('care about')) {
+        return `${knowledge.name} values ${knowledge.values.join('; ')}.`;
+      }
+
+      if (q.includes('chatbot') || q.includes('bot')) {
+        return `This is a static client-side bot built into the page. For a real AI chatbot on GitHub Pages, connect the UI to a serverless backend such as Cloudflare Workers or Vercel Functions.`;
+      }
+
+      return `${knowledge.name} works on practical automation and AI systems in the ${knowledge.team}. Ask about contact details, team, focus areas, or approach.`;
+    }
+
+    function handleSend() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      addMessage(answerQuestion(text), 'bot');
+      chatInput.value = '';
+      chatInput.focus();
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    chatInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') handleSend();
+    });
+
+    addMessage('Hi! I can answer basic questions about Bozy’s public profile. Try asking “What does Bozy work on?” or “How can I contact Bozy?”');
+  </script>
+</body>
+</html>
