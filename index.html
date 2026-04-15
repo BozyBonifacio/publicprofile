@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bozy Bonifacio | Cloud Engineer</title>
-  <meta name="description" content="Public profile of Bozy Bonifacio, Cloud Engineer and DevOps professional based in Cainta, Rizal, Philippines." />
+  <title>Bozy Bonifacio | DevOps Engineer | Cloud Engineer</title>
+  <meta name="description" content="ATS-friendly public profile of Bozy Bonifacio, DevOps Engineer and Cloud Engineer with Azure, Kubernetes, Terraform, CI/CD, and cloud infrastructure experience." />
   <style>
     :root {
       --bg: #0b1020;
@@ -28,13 +28,13 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1160px, calc(100% - 32px));
       margin: 0 auto;
       padding: 32px 0 56px;
     }
     .hero {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
       gap: 24px;
       align-items: stretch;
       margin-bottom: 24px;
@@ -55,8 +55,8 @@
       content: "";
       position: absolute;
       inset: auto -40px -40px auto;
-      width: 180px;
-      height: 180px;
+      width: 190px;
+      height: 190px;
       background: radial-gradient(circle, rgba(125,211,252,0.28), transparent 70%);
       pointer-events: none;
     }
@@ -71,11 +71,11 @@
     }
     h1, h2, h3 { margin: 0 0 10px; line-height: 1.15; }
     h1 { font-size: clamp(2.2rem, 4vw, 4rem); }
-    h2 { font-size: clamp(1.4rem, 2vw, 1.8rem); }
+    h2 { font-size: clamp(1.35rem, 2vw, 1.8rem); }
     h3 { font-size: 1.05rem; }
     .subtitle {
       color: #d7e0fb;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       margin-bottom: 14px;
     }
     .muted { color: var(--muted); }
@@ -104,7 +104,7 @@
     }
     .stat b {
       display: block;
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       margin-bottom: 4px;
     }
     .section {
@@ -122,12 +122,9 @@
       padding: 8px 12px;
       background: rgba(167,139,250,0.12);
       color: #ede9fe;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
-    .timeline {
-      display: grid;
-      gap: 18px;
-    }
+    .timeline { display: grid; gap: 18px; }
     .job {
       border-left: 3px solid rgba(125,211,252,0.5);
       padding-left: 16px;
@@ -141,16 +138,19 @@
       margin: 10px 0 0 18px;
       padding: 0;
     }
+    .job li { margin-bottom: 6px; }
     .two-col {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 24px;
       margin-top: 24px;
     }
-    .bot {
+    .grid-2 {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
+    .bot { display: grid; gap: 14px; }
     .chat-box {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
@@ -167,15 +167,8 @@
       border-radius: 16px;
     }
     .bot-msg { background: rgba(125,211,252,0.12); }
-    .user-msg {
-      margin-left: auto;
-      background: rgba(167,139,250,0.16);
-    }
-    .prompt-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .user-msg { margin-left: auto; background: rgba(167,139,250,0.16); }
+    .prompt-row { display: flex; gap: 10px; flex-wrap: wrap; }
     button, .ghost-input {
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.04);
@@ -186,14 +179,26 @@
     }
     button { cursor: pointer; }
     button:hover { background: rgba(255,255,255,0.08); }
+    .small-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
     .footer {
       margin-top: 30px;
       text-align: center;
       color: var(--muted);
       font-size: 0.92rem;
     }
+    code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
     @media (max-width: 900px) {
-      .hero, .two-col { grid-template-columns: 1fr; }
+      .hero, .two-col, .grid-2 { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
     }
   </style>
@@ -202,26 +207,27 @@
   <div class="wrap">
     <section class="hero">
       <div class="card hero-main">
-        <div class="eyebrow">Cloud Engineer · DevOps · Azure</div>
+        <div class="eyebrow">DevOps Engineer - Cloud Engineer - Azure - Kubernetes</div>
         <h1>Bozy Bonifacio</h1>
-        <div class="subtitle">Cloud Engineer at AxiCorp</div>
+        <div class="subtitle">DevOps Engineer | Cloud Engineer | Azure Infrastructure | CI/CD | Cloud Security</div>
         <p class="muted">
-          “Leave it better than you found it.” That mindset has shaped Bozy’s career across application development,
-          DevOps, and cloud engineering. He has worked in IT since 2005 and has built experience across Microsoft
-          technologies, Azure, AWS, Terraform, Kubernetes, Databricks, and modern delivery pipelines.
+          DevOps Engineer and Cloud Engineer with 10+ years of experience in infrastructure, cloud platforms,
+          automation, application support, and software delivery, plus earlier experience in application development.
+          Strong hands-on background in Azure, AWS, Terraform, Kubernetes, Azure DevOps, Databricks, GitOps,
+          cloud networking, storage, monitoring, incident response, and compliance-aware operations.
         </p>
         <div class="stats">
           <div class="stat">
+            <b>10+ years</b>
+            <span class="muted">DevOps, infrastructure, cloud operations, and software delivery</span>
+          </div>
+          <div class="stat">
             <b>20+ years</b>
-            <span class="muted">in IT, from software development to cloud infrastructure</span>
+            <span class="muted">overall IT experience from development to cloud engineering</span>
           </div>
           <div class="stat">
-            <b>2005</b>
-            <span class="muted">career starting point in the technology sector</span>
-          </div>
-          <div class="stat">
-            <b>Azure-first</b>
-            <span class="muted">focus with DevOps, Kubernetes, networking, and cloud operations</span>
+            <b>Azure certified</b>
+            <span class="muted">Solutions Architect Expert and DevOps Engineer Expert</span>
           </div>
         </div>
       </div>
@@ -251,81 +257,94 @@
     </section>
 
     <section class="card section">
-      <h2>Top skills</h2>
-      <div class="chips" aria-label="Top skills">
-        <span class="chip">Artificial Intelligence (AI)</span>
-        <span class="chip">Networking</span>
-        <span class="chip">Cloud Administration</span>
-        <span class="chip">Azure</span>
-        <span class="chip">Kubernetes</span>
+      <h2>Core skills</h2>
+      <div class="chips" aria-label="Core skills">
+        <span class="chip">Microsoft Azure</span>
+        <span class="chip">AWS</span>
         <span class="chip">Terraform</span>
-        <span class="chip">Databricks</span>
-        <span class="chip">DevOps Pipelines</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Azure Kubernetes Service</span>
+        <span class="chip">Azure DevOps</span>
+        <span class="chip">CI/CD</span>
+        <span class="chip">FluxCD</span>
+        <span class="chip">GitOps</span>
+        <span class="chip">Azure Databricks</span>
+        <span class="chip">Storage Accounts</span>
+        <span class="chip">Key Vault</span>
+        <span class="chip">VNet</span>
+        <span class="chip">Application Gateway</span>
+        <span class="chip">Datadog</span>
+        <span class="chip">OpenShift</span>
+        <span class="chip">Red Hat Enterprise Linux</span>
+        <span class="chip">Windows</span>
+        <span class="chip">Cloud Security</span>
+        <span class="chip">Cost Optimization</span>
+        <span class="chip">ISO</span>
+        <span class="chip">GDPR</span>
       </div>
     </section>
 
     <div class="two-col">
       <section class="card section">
-        <h2>Experience</h2>
+        <h2>Professional experience</h2>
         <div class="timeline">
           <article class="job">
-            <h3>Cloud Engineer · Satellite Office Solutions Pty Ltd</h3>
-            <div class="meta">October 2025 – Present · Philippines</div>
+            <h3>Cloud Engineer - Satellite Office Solutions Pty Ltd</h3>
+            <div class="meta">October 2025 - Present | Philippines</div>
             <ul>
-              <li>Builds and maintains scalable, secure, and reliable cloud infrastructure on Azure.</li>
-              <li>Optimizes cloud networking and storage, reliability, scalability, and performance.</li>
-              <li>Resolves infrastructure incidents and applies cloud security best practices.</li>
-              <li>Works with security teams on compliance requirements including ISO and GDPR.</li>
-              <li>Reviews cloud resources for cost and security optimization and documents processes.</li>
+              <li>Build and maintain scalable, secure, and reliable cloud infrastructure on Azure.</li>
+              <li>Design, deploy, and manage infrastructure, networking, and storage services.</li>
+              <li>Improve reliability, scalability, performance, and incident response for business-critical systems.</li>
+              <li>Apply cloud security best practices and support compliance requirements including ISO and GDPR.</li>
+              <li>Perform cost and security optimization reviews and document operational processes.</li>
             </ul>
           </article>
 
           <article class="job">
-            <h3>Development Operations Engineer · Satellite Office Solutions Pty Ltd</h3>
-            <div class="meta">July 2024 – October 2025 · Philippines</div>
+            <h3>Development Operations Engineer / DevOps Engineer - Satellite Office Solutions Pty Ltd (Axi deployment)</h3>
+            <div class="meta">July 2024 - October 2025 | Philippines</div>
             <ul>
-              <li>Consulted through Satellite Office and was permanently deployed in Axi as a DevOps Engineer.</li>
-              <li>Supported trading applications using Azure Kubernetes Service, Azure VMs, Databricks, Azure DevOps Pipelines, Storage Accounts, Key Vaults, VNets, and Application Gateway.</li>
-              <li>Worked with Datadog for logging and FluxCD for Kubernetes GitOps workflows.</li>
+              <li>Supported trading applications on Azure in a client-facing production environment.</li>
+              <li>Worked with Azure Kubernetes Service, Azure VM, Azure Databricks, Azure DevOps Pipeline, Storage Accounts, Key Vault, VNet, and Application Gateway.</li>
+              <li>Used Datadog for logging and FluxCD for Kubernetes GitOps workflows.</li>
             </ul>
           </article>
 
           <article class="job">
-            <h3>Software Consultant (DevOps) · Optimum Solutions Pte Ltd</h3>
-            <div class="meta">December 2022 – June 2024 · Singapore</div>
+            <h3>Software Consultant (DevOps) - Optimum Solutions Pte Ltd</h3>
+            <div class="meta">December 2022 - June 2024 | Singapore</div>
             <ul>
-              <li>Supported client delivery as a consultant deployed in United Overseas Bank.</li>
-              <li>Helped with implementation, upgrades, and support for private banking products.</li>
-              <li>Worked across Windows services, Red Hat Enterprise Linux, and Red Hat OpenShift.</li>
+              <li>Supported implementation, upgrade, and operations for private banking products at United Overseas Bank.</li>
+              <li>Worked with services running on Windows, Red Hat Enterprise Linux, and Red Hat OpenShift Container Platform.</li>
+              <li>Delivered enterprise DevOps and platform support in a regulated environment.</li>
             </ul>
           </article>
 
           <article class="job">
-            <h3>DevOps Engineer · DysrupIT Pty Ltd</h3>
-            <div class="meta">August 2022 – November 2022 · Philippines</div>
+            <h3>DevOps Engineer - DysrupIT Pty Ltd</h3>
+            <div class="meta">August 2022 - November 2022 | Philippines</div>
             <ul>
-              <li>Consulted in Couchbase-related operational support for clustered databases used by Royal Caribbean cruise ships.</li>
-              <li>Worked with Couchbase NoSQL Database and Red Hat Enterprise Linux environments.</li>
+              <li>Provided operational support for clustered Couchbase NoSQL databases used by Royal Caribbean Cruises.</li>
+              <li>Worked in Linux-based production environments using Red Hat Enterprise Linux.</li>
             </ul>
           </article>
 
           <article class="job">
-            <h3>DevOps Engineer / Application Developer · Willis Towers Watson</h3>
-            <div class="meta">February 2013 – July 2022 · Taguig, Philippines</div>
+            <h3>DevOps Engineer - Willis Towers Watson</h3>
+            <div class="meta">March 2015 - July 2022 | Taguig, Philippines</div>
             <ul>
-              <li>Designed and developed robust solutions with software development and QA teams.</li>
               <li>Maintained automated build and continuous integration processes to improve software delivery.</li>
-              <li>Previously developed client solutions using ASP.NET, SQL Server, C#, MVC, JavaScript, and TDD practices.</li>
+              <li>Worked with development and QA teams to design scalable, performance-focused solutions.</li>
+              <li>Researched and introduced tools to improve the agile development environment.</li>
             </ul>
           </article>
 
           <article class="job">
-            <h3>Earlier roles</h3>
-            <div class="meta">2005 – 2013 · Pasig, Makati, Taguig</div>
+            <h3>Application Developer - Willis Towers Watson and earlier roles</h3>
+            <div class="meta">November 2005 - March 2015 | Philippines</div>
             <ul>
-              <li>Application Developer at kgb Philippines, Inc. (2010–2013)</li>
-              <li>Application Developer at Ingenico Group (2007–2010)</li>
-              <li>IT Developer at Transcom (2005–2007)</li>
+              <li>Built and supported applications using .NET, C#, ASP.NET, MVC, JavaScript, SQL Server, and TDD practices.</li>
+              <li>Held earlier Application Developer and IT Developer roles at kgb Philippines, Ingenico Group, and Transcom.</li>
             </ul>
           </article>
         </div>
@@ -334,15 +353,15 @@
       <section class="card section bot">
         <div>
           <h2>Ask about Bozy</h2>
-          <p class="muted">This static chatbot answers common questions from the profile data on this page. It runs entirely in the browser.</p>
+          <p class="muted">This static chatbot answers common recruiter and hiring-manager questions from the profile data on this page.</p>
         </div>
         <div id="chat" class="chat-box" aria-live="polite"></div>
         <div class="prompt-row">
-          <button data-q="What does Bozy do now?">Current role</button>
+          <button data-q="What roles is Bozy targeting?">Target roles</button>
           <button data-q="What cloud technologies does Bozy use?">Cloud stack</button>
           <button data-q="What certifications does Bozy have?">Certifications</button>
-          <button data-q="Where has Bozy worked before?">Experience</button>
-          <button data-q="What is Bozy's education?">Education</button>
+          <button data-q="What is Bozy's recent experience?">Recent experience</button>
+          <button data-q="What operating systems and platforms has Bozy supported?">Platforms</button>
         </div>
         <input id="customQuestion" class="ghost-input" type="text" placeholder="Type a question about the profile and press Enter" />
       </section>
@@ -350,24 +369,25 @@
 
     <div class="two-col">
       <section class="card section">
-        <h2>Certifications & languages</h2>
+        <h2>Certifications and education</h2>
         <div class="chips" style="margin-bottom: 18px;">
           <span class="chip">Microsoft Certified: Azure Solutions Architect Expert</span>
           <span class="chip">Microsoft Certified: Azure DevOps Engineer Expert</span>
           <span class="chip">Couchbase Certified Associate Architect with Capella</span>
           <span class="chip">Verified International Academic Qualifications</span>
-          <span class="chip">English · Full Professional</span>
+          <span class="chip">English - Full Professional</span>
         </div>
         <h3>Education</h3>
-        <p class="muted" style="margin-top: 8px;">AMA University · Bachelor of Science in Information Technology (2001–2005)</p>
+        <p class="muted" style="margin-top: 8px;">AMA University - Bachelor of Science in Information Technology (2001 - 2005)</p>
       </section>
 
       <section class="card section">
-        <h2>Professional focus</h2>
+        <div class="small-title">ATS keywords</div>
         <p class="muted">
-          Bozy brings together a foundation in software engineering and years of DevOps and infrastructure experience.
-          His profile centers on Azure cloud architecture, Kubernetes operations, delivery pipelines, networking,
-          reliability, compliance-aware engineering, and continuous improvement.
+          DevOps Engineer, Cloud Engineer, Microsoft Azure, AWS, Terraform, Kubernetes, AKS, Azure DevOps,
+          CI/CD, FluxCD, GitOps, Databricks, Azure Virtual Machines, Storage Accounts, Key Vault, VNet,
+          Application Gateway, Datadog, OpenShift, Red Hat Enterprise Linux, Windows, cloud security,
+          compliance, ISO, GDPR, incident management, cloud infrastructure, production support, cost optimization.
         </p>
       </section>
     </div>
@@ -380,28 +400,28 @@
   <script>
     const answers = [
       {
-        match: [/current role/, /what does.*do now/, /now/, /present/],
-        text: "Bozy is currently a Cloud Engineer at Satellite Office Solutions Pty Ltd in the Philippines, where he builds and maintains scalable, secure, and reliable Azure infrastructure."
+        match: [/target role/, /roles/, /looking for/, /position/, /job title/],
+        text: "Bozy is well aligned for DevOps Engineer and Cloud Engineer roles, with strong emphasis on Azure infrastructure, CI/CD, Kubernetes, Terraform, cloud security, and production support."
       },
       {
         match: [/cloud/, /stack/, /technologies/, /azure/, /kubernetes/, /terraform/, /databricks/],
-        text: "His profile mentions Azure, AWS, Terraform, Kubernetes, Databricks, Azure Kubernetes Service, Azure VMs, Azure DevOps Pipelines, Storage Accounts, Key Vaults, VNets, Application Gateway, Datadog, and FluxCD."
+        text: "His profile includes Microsoft Azure, AWS, Terraform, Kubernetes, Azure Kubernetes Service, Azure DevOps, Azure Databricks, Storage Accounts, Key Vault, VNet, Application Gateway, Datadog, FluxCD, GitOps, and OpenShift."
       },
       {
         match: [/certification/, /certifications/, /certified/],
         text: "Bozy holds Microsoft Certified: Azure Solutions Architect Expert, Microsoft Certified: Azure DevOps Engineer Expert, Couchbase Certified Associate Architect with Capella, and Verified International Academic Qualifications."
       },
       {
-        match: [/experience/, /worked/, /career/, /history/, /before/],
-        text: "He has worked in IT since 2005, including roles at Satellite Office Solutions, Optimum Solutions, DysrupIT, Willis Towers Watson, kgb Philippines, Ingenico Group, and Transcom."
+        match: [/recent experience/, /current/, /latest/, /present/, /recent/],
+        text: "Most recently, Bozy has worked as a Cloud Engineer and DevOps Engineer through Satellite Office Solutions, supporting Azure infrastructure, cloud operations, trading applications, AKS, Databricks, Azure DevOps Pipeline, Datadog, and FluxCD."
       },
       {
-        match: [/education/, /study/, /degree/, /university/],
-        text: "Bozy earned a Bachelor of Science in Information Technology from AMA University, covering 2001 to 2005."
+        match: [/platform/, /operating system/, /linux/, /windows/, /openshift/],
+        text: "He has supported Windows, Red Hat Enterprise Linux, Red Hat OpenShift Container Platform, Azure cloud services, and Kubernetes-based environments."
       },
       {
         match: [/contact/, /email/, /phone/, /linkedin/, /location/],
-        text: "You can reach Bozy at bozy.bonifacio@gmail.com or +63 918 604 0773. He is based in Cainta, Rizal, Philippines, and has LinkedIn and GitHub Pages profile links on this page."
+        text: "You can reach Bozy at bozy.bonifacio@gmail.com or +63 918 604 0773. He is based in Cainta, Rizal, Philippines, and his LinkedIn and public profile links are listed on this page."
       }
     ];
 
@@ -420,11 +440,11 @@
       addBubble(question, 'user');
       const lower = question.toLowerCase();
       const found = answers.find(item => item.match.some(rx => rx.test(lower)));
-      const fallback = "This static assistant knows the profile on this page. Try asking about Bozy's current role, cloud technologies, certifications, work experience, education, or contact details.";
+      const fallback = "This static assistant knows the ATS-friendly profile on this page. Try asking about target roles, cloud technologies, certifications, recent experience, platforms, or contact details.";
       addBubble(found ? found.text : fallback, 'bot');
     }
 
-    addBubble("Hi, I’m a static profile assistant. Ask about Bozy’s role, certifications, experience, education, or cloud stack.", 'bot');
+    addBubble("Hi, I am a static profile assistant. Ask about Bozy's target roles, certifications, cloud stack, recent experience, or platforms.", 'bot');
 
     document.querySelectorAll('button[data-q]').forEach(btn => {
       btn.addEventListener('click', () => reply(btn.dataset.q));
