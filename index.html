@@ -16,8 +16,6 @@
       --accent-2: #a78bfa;
       --border: rgba(255,255,255,0.12);
       --shadow: 0 20px 50px rgba(0,0,0,0.25);
-      --danger: #fca5a5;
-      --ok: #86efac;
     }
     * { box-sizing: border-box; }
     body {
@@ -147,24 +145,26 @@
       gap: 24px;
       margin-top: 24px;
     }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
     .bot { display: grid; gap: 14px; }
     .chat-box {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
       border-radius: 18px;
-      min-height: 340px;
-      max-height: 520px;
-      overflow-y: auto;
+      min-height: 280px;
       padding: 16px;
       display: grid;
       gap: 12px;
       align-content: start;
     }
     .bubble {
-      max-width: 92%;
+      max-width: 90%;
       padding: 12px 14px;
       border-radius: 16px;
-      white-space: pre-wrap;
     }
     .bot-msg { background: rgba(125,211,252,0.12); }
     .user-msg { margin-left: auto; background: rgba(167,139,250,0.16); }
@@ -179,13 +179,6 @@
     }
     button { cursor: pointer; }
     button:hover { background: rgba(255,255,255,0.08); }
-    button:disabled { opacity: 0.6; cursor: not-allowed; }
-    .input-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
-    }
-    .ghost-input { width: 100%; }
     .small-title {
       font-size: 0.9rem;
       letter-spacing: 0.04em;
@@ -193,12 +186,6 @@
       color: var(--accent);
       margin-bottom: 8px;
     }
-    .status-line {
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-    .status-line strong { color: var(--ok); }
-    .status-line.error strong { color: var(--danger); }
     .footer {
       margin-top: 30px;
       text-align: center;
@@ -211,8 +198,8 @@
       border-radius: 8px;
     }
     @media (max-width: 900px) {
-      .hero, .two-col { grid-template-columns: 1fr; }
-      .stats, .input-row { grid-template-columns: 1fr; }
+      .hero, .two-col, .grid-2 { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -366,21 +353,17 @@
       <section class="card section bot">
         <div>
           <h2>Ask about Bozy</h2>
-          <p class="muted">This version supports a real chatbot backend. Host this page on GitHub Pages, Cloudflare Pages, or Netlify, then connect it to the worker API in <code>worker.js</code>.</p>
+          <p class="muted">This profile chatbot can use a Cloudflare Worker backend for richer answers and falls back to static recruiter-focused answers if the backend is not configured.</p>
         </div>
         <div id="chat" class="chat-box" aria-live="polite"></div>
         <div class="prompt-row">
           <button data-q="What roles is Bozy targeting?">Target roles</button>
-          <button data-q="Summarize Bozy for a DevOps Engineer role.">DevOps summary</button>
-          <button data-q="Summarize Bozy for a Cloud Engineer role.">Cloud summary</button>
           <button data-q="What cloud technologies does Bozy use?">Cloud stack</button>
           <button data-q="What certifications does Bozy have?">Certifications</button>
+          <button data-q="What is Bozy's recent experience?">Recent experience</button>
+          <button data-q="What operating systems and platforms has Bozy supported?">Platforms</button>
         </div>
-        <div class="status-line" id="statusLine">Backend status: <strong>not checked</strong></div>
-        <div class="input-row">
-          <input id="customQuestion" class="ghost-input" type="text" placeholder="Ask a recruiter-style question about Bozy's profile" />
-          <button id="sendBtn">Send</button>
-        </div>
+        <input id="customQuestion" class="ghost-input" type="text" placeholder="Type a question about the profile and press Enter" />
       </section>
     </div>
 
@@ -410,14 +393,14 @@
     </div>
 
     <div class="footer">
-      Front end is static-host friendly. Point <code>window.CHATBOT_API_URL</code> to your deployed worker for live AI answers.
+      Built as a static GitHub Pages-friendly public profile. Update the content directly in <code>index.html</code>.
     </div>
   </div>
 
   <script>
-    window.CHATBOT_API_URL = window.CHATBOT_API_URL || "https://YOUR-WORKER.your-subdomain.workers.dev/chat";
+    window.CHATBOT_API_URL = window.CHATBOT_API_URL || "";
 
-    const staticFallbackAnswers = [
+    const answers = [
       {
         match: [/target role/, /roles/, /looking for/, /position/, /job title/],
         text: "Bozy is well aligned for DevOps Engineer and Cloud Engineer roles, with strong emphasis on Azure infrastructure, CI/CD, Kubernetes, Terraform, cloud security, and production support."
@@ -437,111 +420,68 @@
       {
         match: [/platform/, /operating system/, /linux/, /windows/, /openshift/],
         text: "He has supported Windows, Red Hat Enterprise Linux, Red Hat OpenShift Container Platform, Azure cloud services, and Kubernetes-based environments."
+      },
+      {
+        match: [/contact/, /email/, /phone/, /linkedin/, /location/],
+        text: "You can reach Bozy at bozy.bonifacio@gmail.com or +63 918 604 0773. He is based in Cainta, Rizal, Philippines, and his LinkedIn and public profile links are listed on this page."
       }
     ];
 
-    const chat = document.getElementById("chat");
-    const input = document.getElementById("customQuestion");
-    const sendBtn = document.getElementById("sendBtn");
-    const statusLine = document.getElementById("statusLine");
-    let backendAvailable = false;
+    const chat = document.getElementById('chat');
+    const input = document.getElementById('customQuestion');
 
     function addBubble(text, who) {
-      const div = document.createElement("div");
-      div.className = `bubble ${who === "user" ? "user-msg" : "bot-msg"}`;
+      const div = document.createElement('div');
+      div.className = `bubble ${who === 'user' ? 'user-msg' : 'bot-msg'}`;
       div.textContent = text;
       chat.appendChild(div);
       chat.scrollTop = chat.scrollHeight;
     }
 
-    function setStatus(ok, text) {
-      statusLine.className = `status-line${ok ? "" : " error"}`;
-      statusLine.innerHTML = `Backend status: <strong>${text}</strong>`;
-    }
-
-    function getStaticFallback(question) {
+    function getStaticReply(question) {
       const lower = question.toLowerCase();
-      const found = staticFallbackAnswers.find(item => item.match.some(rx => rx.test(lower)));
-      return found
-        ? found.text
-        : "The live AI backend is not connected yet. After you deploy worker.js and set window.CHATBOT_API_URL, this chat can answer open-ended recruiter questions about Bozy's profile.";
+      const found = answers.find(item => item.match.some(rx => rx.test(lower)));
+      return found ? found.text : "This assistant knows the ATS-friendly profile on this page. Try asking about target roles, cloud technologies, certifications, recent experience, platforms, or contact details.";
     }
 
-    async function checkBackend() {
-      if (!window.CHATBOT_API_URL || window.CHATBOT_API_URL.includes("YOUR-WORKER")) {
-        setStatus(false, "not configured");
-        return;
-      }
+    async function fetchBackendReply(question) {
+      if (!window.CHATBOT_API_URL) return null;
       try {
-        const res = await fetch(window.CHATBOT_API_URL.replace(/\/chat$/, "/health"), { method: "GET" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        backendAvailable = true;
-        setStatus(true, "connected");
-      } catch (err) {
-        backendAvailable = false;
-        setStatus(false, "offline, using static fallback");
+        const response = await fetch(window.CHATBOT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: question })
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        return data.reply || null;
+      } catch (error) {
+        console.warn('Backend unavailable, using static fallback.', error);
+        return null;
       }
     }
 
-    async function askBackend(question) {
-      const res = await fetch(window.CHATBOT_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: question })
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || `HTTP ${res.status}`);
-      }
-
-      const data = await res.json();
-      return data.answer;
+    async function reply(question) {
+      addBubble(question, 'user');
+      addBubble('Thinking...', 'bot');
+      const loadingBubble = chat.lastElementChild;
+      const backendReply = await fetchBackendReply(question);
+      loadingBubble.remove();
+      addBubble(backendReply || getStaticReply(question), 'bot');
     }
 
-    async function handleQuestion(question) {
-      addBubble(question, "user");
-      sendBtn.disabled = true;
+    addBubble("Hi, I am Bozy's profile assistant. I can answer from this page now, and I can use a backend if you connect window.CHATBOT_API_URL to your Cloudflare Worker.", 'bot');
 
-      try {
-        let answer;
-        if (backendAvailable) {
-          answer = await askBackend(question);
-        } else {
-          answer = getStaticFallback(question);
-        }
-        addBubble(answer, "bot");
-      } catch (err) {
-        backendAvailable = false;
-        setStatus(false, "offline, using static fallback");
-        addBubble(getStaticFallback(question), "bot");
-      } finally {
-        sendBtn.disabled = false;
-      }
-    }
-
-    document.querySelectorAll("button[data-q]").forEach(btn => {
-      btn.addEventListener("click", () => handleQuestion(btn.dataset.q));
+    document.querySelectorAll('button[data-q]').forEach(btn => {
+      btn.addEventListener('click', () => reply(btn.dataset.q));
     });
 
-    sendBtn.addEventListener("click", () => {
-      const value = input.value.trim();
-      if (!value) return;
-      handleQuestion(value);
-      input.value = "";
-    });
-
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const value = input.value.trim();
-        if (!value) return;
-        handleQuestion(value);
-        input.value = "";
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && input.value.trim()) {
+        reply(input.value.trim());
+        input.value = '';
       }
     });
-
-    addBubble("Hi. Ask me recruiter-style questions about Bozy's profile. I can run in static mode now, or connect to a live AI backend after you deploy worker.js.", "bot");
-    checkBackend();
   </script>
 </body>
 </html>
