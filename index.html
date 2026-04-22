@@ -353,7 +353,7 @@
       <section class="card section bot">
         <div>
           <h2>Ask about Bozy</h2>
-          <p class="muted">This profile chatbot can use a Cloudflare Worker backend for richer answers and falls back to static recruiter-focused answers if the backend is not configured.</p>
+          <p class="muted">This chatbot can call a Cloudflare Workers AI backend for richer answers, while still falling back to built-in recruiter-friendly profile answers if the backend is unavailable.</p>
         </div>
         <div id="chat" class="chat-box" aria-live="polite"></div>
         <div class="prompt-row">
@@ -438,39 +438,37 @@
       chat.scrollTop = chat.scrollHeight;
     }
 
-    function getStaticReply(question) {
+    function fallbackReply(question) {
       const lower = question.toLowerCase();
       const found = answers.find(item => item.match.some(rx => rx.test(lower)));
-      return found ? found.text : "This assistant knows the ATS-friendly profile on this page. Try asking about target roles, cloud technologies, certifications, recent experience, platforms, or contact details.";
-    }
-
-    async function fetchBackendReply(question) {
-      if (!window.CHATBOT_API_URL) return null;
-      try {
-        const response = await fetch(window.CHATBOT_API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: question })
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        return data.reply || null;
-      } catch (error) {
-        console.warn('Backend unavailable, using static fallback.', error);
-        return null;
-      }
+      const fallback = "This profile assistant knows the ATS-friendly profile on this page. Try asking about target roles, cloud technologies, certifications, recent experience, platforms, or contact details.";
+      return found ? found.text : fallback;
     }
 
     async function reply(question) {
       addBubble(question, 'user');
-      addBubble('Thinking...', 'bot');
-      const loadingBubble = chat.lastElementChild;
-      const backendReply = await fetchBackendReply(question);
-      loadingBubble.remove();
-      addBubble(backendReply || getStaticReply(question), 'bot');
+
+      if (!window.CHATBOT_API_URL) {
+        addBubble(fallbackReply(question), 'bot');
+        return;
+      }
+
+      try {
+        const res = await fetch(window.CHATBOT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: question })
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        addBubble(data.reply || fallbackReply(question), 'bot');
+      } catch (err) {
+        addBubble(fallbackReply(question), 'bot');
+      }
     }
 
-    addBubble("Hi, I am Bozy's profile assistant. I can answer from this page now, and I can use a backend if you connect window.CHATBOT_API_URL to your Cloudflare Worker.", 'bot');
+    addBubble("Hi, I am Bozy's profile assistant. I can use Cloudflare Workers AI when connected, and I fall back to built-in recruiter-friendly answers when needed. Ask about target roles, certifications, cloud stack, recent experience, or platforms.", 'bot');
 
     document.querySelectorAll('button[data-q]').forEach(btn => {
       btn.addEventListener('click', () => reply(btn.dataset.q));
